@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Circuit Diagram, cdlibrary.dll 4.0.0.0 -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" width="480" height="300" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .line {stroke:red;stroke-linecap:square;stroke-width:2}
+        .dot {fill-opacity:1;fill:red;stroke:red;stroke-width:2}
+        .component {fill-opacity:0;stroke:red;stroke-linecap:square;stroke-width:2}
+        .label-start {font-family:arial;font-size:12px;fill:red;text-anchor:start}
+        .label-middle {font-family:arial;font-size:12px;fill:red;text-anchor:middle}
+        .label-end {font-family:arial;font-size:12px;fill:red;text-anchor:end}
+    </style>
+    <text x="360" y="260" class="label-start" dominant-baseline="middle" transform="rotate(0, 360, 260)">+</text>
+    <text x="360" y="180" class="label-start" dominant-baseline="middle" transform="rotate(0, 360, 180)">-</text>
+    <text x="360" y="160" class="label-start" dominant-baseline="middle" transform="rotate(0, 360, 160)">+</text>
+    <text x="360" y="70" class="label-start" dominant-baseline="middle" transform="rotate(0, 360, 70)">-</text>
+    <text x="32" y="250" class="label-end" dominant-baseline="middle" transform="rotate(0, 32, 250)">-</text>
+    <line x1="43" y1="250" x2="70" y2="250" class="line" />
+    <ellipse cx="40" cy="250" rx="3" ry="3" class="dot" />
+    <text x="32" y="190" class="label-end" dominant-baseline="middle" transform="rotate(0, 32, 190)">+</text>
+    <line x1="43" y1="190" x2="60" y2="190" class="line" />
+    <ellipse cx="40" cy="190" rx="3" ry="3" class="dot" />
+    <text x="400" y="220" class="label-start" dominant-baseline="middle" transform="rotate(0, 400, 220)">woofer</text>
+    <text x="400" y="110" class="label-start" dominant-baseline="middle" transform="rotate(0, 400, 110)">tweeter</text>
+    <line x1="120" y1="80" x2="120" y2="190" class="line" />
+    <line x1="170" y1="150" x2="170" y2="250" class="line" />
+    <line x1="60" y1="190" x2="180" y2="190" class="line" />
+    <line x1="60" y1="250" x2="360" y2="250" class="line" />
+    <line x1="230" y1="190" x2="360" y2="190" class="line" />
+    <line x1="180" y1="190" x2="181" y2="190" class="line" />
+    <line x1="229" y1="190" x2="230" y2="190" class="line" />
+    <path d="M 181,190 A 2,1.5 90 1 1 193,190 M 193,190 A 2,1.5 90 1 1 205,190 M 205,190 A 2,1.5 90 1 1 217,190 M 217,190 A 2,1.5 90 1 1 229,190" class="component" />
+    <text x="205" y="176" class="label-middle" dominant-baseline="baseline" transform="rotate(0, 205, 176)">470 µH</text>
+    <line x1="250" y1="190" x2="250" y2="216" class="line" />
+    <line x1="250" y1="224" x2="250" y2="250" class="line" />
+    <line x1="236" y1="216" x2="264" y2="216" class="line" />
+    <line x1="236" y1="224" x2="264" y2="224" class="line" />
+    <text x="230" y="220" class="label-end" dominant-baseline="middle" transform="rotate(0, 230, 220)">10 µF</text>
+    <line x1="120" y1="80" x2="170" y2="80" class="line" />
+    <line x1="170" y1="50" x2="170" y2="110" class="line" />
+    <line x1="300" y1="80" x2="360" y2="80" class="line" />
+    <line x1="300" y1="80" x2="300" y2="90" class="line" />
+    <line x1="170" y1="150" x2="360" y2="150" class="line" />
+    <line x1="300" y1="140" x2="300" y2="150" class="line" />
+    <line x1="300" y1="80" x2="300" y2="90" class="line" />
+    <line x1="220" y1="80" x2="300" y2="80" class="line" />
+    <line x1="220" y1="50" x2="220" y2="110" class="line" />
+    <line x1="300" y1="90" x2="300" y2="91" class="line" />
+    <line x1="300" y1="139" x2="300" y2="140" class="line" />
+    <path d="M 300,91 A 1.5,2 90 1 1 300,103 M 300,103 A 1.5,2 90 1 1 300,115 M 300,115 A 1.5,2 90 1 1 300,127 M 300,127 A 1.5,2 90 1 1 300,139" class="component" />
+    <text x="292" y="115" class="label-end" dominant-baseline="middle" transform="rotate(0, 292, 115)">470 µH</text>
+    <line x1="170" y1="110" x2="191" y2="110" class="line" />
+    <line x1="199" y1="110" x2="220" y2="110" class="line" />
+    <line x1="191" y1="96" x2="191" y2="124" class="line" />
+    <line x1="199" y1="96" x2="199" y2="124" class="line" />
+    <text x="195" y="90" class="label-middle" dominant-baseline="baseline" transform="rotate(0, 195, 90)">4.7 µF</text>
+    <line x1="320" y1="190" x2="320" y2="216" class="line" />
+    <line x1="320" y1="224" x2="320" y2="250" class="line" />
+    <line x1="306" y1="216" x2="334" y2="216" class="line" />
+    <line x1="306" y1="224" x2="334" y2="224" class="line" />
+    <text x="300" y="220" class="label-end" dominant-baseline="middle" transform="rotate(0, 300, 220)">4.7 µF</text>
+    <line x1="170" y1="50" x2="191" y2="50" class="line" />
+    <line x1="199" y1="50" x2="220" y2="50" class="line" />
+    <line x1="191" y1="36" x2="191" y2="64" class="line" />
+    <line x1="199" y1="36" x2="199" y2="64" class="line" />
+    <text x="195" y="30" class="label-middle" dominant-baseline="baseline" transform="rotate(0, 195, 30)">10 µF</text>
+    <line x1="360" y1="190" x2="360" y2="200" class="line" />
+    <line x1="360" y1="240" x2="360" y2="250" class="line" />
+    <path d="M 360,200 L 368,200 L 383,185 L 383,255 L 368,240 L 368,200 L 352,200 L 352,240 L 368,240" class="component" />
+    <line x1="360" y1="80" x2="360" y2="95" class="line" />
+    <line x1="360" y1="135" x2="360" y2="150" class="line" />
+    <path d="M 360,95 L 368,95 L 383,80 L 383,150 L 368,135 L 368,95 L 352,95 L 352,135 L 368,135" class="component" />
+    <ellipse cx="120" cy="190" rx="2" ry="2" class="dot" />
+    <ellipse cx="170" cy="250" rx="2" ry="2" class="dot" />
+    <ellipse cx="250" cy="250" rx="2" ry="2" class="dot" />
+    <ellipse cx="320" cy="250" rx="2" ry="2" class="dot" />
+    <ellipse cx="250" cy="190" rx="2" ry="2" class="dot" />
+    <ellipse cx="320" cy="190" rx="2" ry="2" class="dot" />
+    <ellipse cx="170" cy="80" rx="2" ry="2" class="dot" />
+    <ellipse cx="300" cy="80" rx="2" ry="2" class="dot" />
+    <ellipse cx="300" cy="150" rx="2" ry="2" class="dot" />
+    <ellipse cx="220" cy="80" rx="2" ry="2" class="dot" />
+</svg>
