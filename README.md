@@ -18,19 +18,6 @@ Here's the list of components I wanted to reuse:
 
 I already know the LCD panel can be reused. The speakers should be relatively straight-forward. The camera looks a little problematic. The microphone is probably OK. I'd love to reuse the power supply if possible. But it's not a big deal if I can't. I'm also hoping to reuse at least the port openings on the back side for a few USB ports as well as the RJ45 for Ethernet.
 
-```
-DC to PD adapter
-
-+--------------+
-| USB Hub &    | -> | USB Ethernet adapter|
-| HDMI adapter | -> | USB 2.0 hub |
-+--------------+
-
-Video controller
-
-Crossover
-```
-
 ## Display
 ## Speakers
 ![Crossover](crossover.svg)
