@@ -10,8 +10,8 @@
         .label-middle {font-family:arial;font-size:12px;fill:red;text-anchor:middle}
         .label-end {font-family:arial;font-size:12px;fill:red;text-anchor:end}
     </style>
-    <text x="360" y="260" class="label-start" dominant-baseline="middle" transform="rotate(0, 360, 260)">+</text>
-    <text x="360" y="180" class="label-start" dominant-baseline="middle" transform="rotate(0, 360, 180)">-</text>
+    <text x="360" y="260" class="label-start" dominant-baseline="middle" transform="rotate(0, 360, 260)">-</text>
+    <text x="360" y="180" class="label-start" dominant-baseline="middle" transform="rotate(0, 360, 180)">+</text>
     <text x="360" y="160" class="label-start" dominant-baseline="middle" transform="rotate(0, 360, 160)">+</text>
     <text x="360" y="70" class="label-start" dominant-baseline="middle" transform="rotate(0, 360, 70)">-</text>
     <text x="32" y="250" class="label-end" dominant-baseline="middle" transform="rotate(0, 32, 250)">-</text>
