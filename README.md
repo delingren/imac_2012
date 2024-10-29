@@ -25,7 +25,7 @@ The model of the LCD panel is LM270WQ1(SD)(F1). Here are the [specs on panelook]
 * Signal Type: eDP (4 Lanes) , 40 pins Connector
 * Backlight: 3 strings WLED , 30K hours , No Driver
 
- I ordered a [controller](https://www.aliexpress.us/item/3256807252731476.html) from AliExpress. If the link doesn't work anymore, just search for the model number. It's powered by RTD2556, a rather popular eDP driver chip. The unit comes with a separate backlight driver board. It seems to have a couple of regulators. All other WLED panels I've seen don't need it; the driver would be already on the video controller. My guess that the WLEDs on this panel uses a different voltage.
+ I ordered a [controller](https://www.aliexpress.us/item/3256807252731476.html) from AliExpress. If the link doesn't work anymore, just search for the model number. It's powered by RTD2556, a rather popular eDP driver chip. The unit comes with a separate backlight driver board. All other WLED panels I've seen don't need it; the driver would be already on the video controller. My guess that the WLEDs on this panel uses a different voltage and the extra board has a buck-boost converter.
 ![BL driver](bl_driver.png)
 
 The backlight connector that came with it is a pain in the neck to push into the one on the LCD panel side. And the connection is rather wobbly. So I decided to cut off both connectors and solder or crimp the wires to a new connector and connect it directly to the backlight controller. 
