@@ -1,5 +1,10 @@
 # 27" iMac 2012 (A1419, EMC 2546) reuse project
 
+* iMac 2012
+* Model: A1419
+* EMC: 2546
+* [Spec](https://everymac.com/systems/apple/imac/specs/imac-core-i5-2.9-27-inch-aluminum-late-2012-specs.html)
+
 Someone was selling this iMac on craigslist for $80. He claimed that the motherboard side of the display connector was busted when he tried to clean up the internal. So I jumped on it, hoping to convert it into an external display and docking station, which doesn't need the motherboard. When I was going to pick it up, the seller told me the connector on the display was damanged too and I could have it for free. I couldn't argue with free. So here we are.  I thought I'd give it a try, hoping that the damaged pins are NCs.
 
 ## Disassembly
