@@ -18,8 +18,8 @@ Here's the list of components I wanted to reuse:
 * P0: Speakers
 * P1: Camera
 * P1: Microphone
+* P2: RJ45 & USB 2.0 ports
 * P3: PSU
-* P3: RJ45 & USB 2.0 ports
 
 I already know the LCD panel can be reused. The speakers should be relatively straight-forward. The camera looks a little problematic. The microphone is probably OK. I'd love to reuse the power supply if possible. But it's not a big deal if I can't. I'm also hoping to reuse at least the port openings on the back side for a few USB ports as well as the RJ45 for Ethernet.
 
@@ -46,10 +46,22 @@ Originally, I wanted to reuse the camera. But after opening up the machine and r
 
 So I decided to get a tiny USB camera module, hoping it'd fit in the tiny space. If that doesn't work, I could always use an external webcam. It's not as aesthetic. But I'm not that picky.
 
+After some research, I came upon this camera sensor ov5693. I also found [boards](https://www.aliexpress.us/item/3256805396719075.html) on Aliexpress that drive the sensor and turn it into a USB device. Then I 3d printed a bracket to fit the sensor into the place evacuated by the original camera, which is quite a challenge, since the space is very packed.
+
+![camera mount](camera_mount.jpeg)
+
 ## Microphone
 Originally, I also wanted to reuse the microphone. It looks like a MEMS PDM microphone. However, the original connector seems to have a short and I can't figure it out without damaging it. It's a 0.4 mm pitch 6 pin connector. I have no idea where to find a replacement. So I figure it's easier to just replace it altogether. And I'm replacing the camera anyway. So I might as well remove everything in that space.
 
 ## IO Panel
+
+The original IO panel has openings for 4 USB A, 2 mini DP, and 1 RJ45 ports. I have no use for the mini DP ports. But I need a USB C female connector. So I decide to cut the bridge between the two mini DP ports to make it big enough for the USB C connector.
+
+I really wanted to provide an Ethernet adapter.
+ I found this [RJ45 socket](
+https://www.aliexpress.us/item/3256806005093192.html) on Aliexpress. I then crimped the wires into a male plug, making it into an extension cable. Then I just need to use a USB Ethernet adapter.
+
+![RJ45 socket](rj45_socket.jpeg)
 
 ## Power Supply
 The PSU provides a 12V rail `G3H`, which is always on. Other voltages and rails are done on the logic board. So that was easy. I just need to cut the original wires and solder my own. Here's an excerpt from the logic board shcematic.
