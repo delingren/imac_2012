@@ -71,7 +71,7 @@ The PSU (Model: ADP-300AF T) provides a single 12V always-on rail `G3H`. Other v
 
 ![PSU](psu.png)
 
-The USB C adapter takes in a PD charger and pass through charges the host. To provide PD, I am going to use a [DC Extender](https://slimq.life/products/dc-to-usb-extender-for-150w-240). It has a DC booster and can provide all the voltages specified in PD 3.0 and maxes out at 100W, which is exactly the maximum the USB C adapter can draw. The video controller runs on 12 DC directly. The switch that controls the power for everything is a [flip flop mechanical relay](https://www.amazon.com/Latching-Flip-Flop-Bistable-Self-Locking-Trigger/dp/B07VL9DBGT) that runs on the always-on power rail of the PSU.
+The USB C adapter takes in a PD charger and pass-through charges the host. To provide PD, I am going to use a [DC Extender](https://slimq.life/products/dc-to-usb-extender-for-150w-240). It has a DC booster and can provide all the voltages specified in PD 3.0 and maxes out at 100W, which is exactly the maximum the USB C adapter can draw. The video controller runs on 12V DC directly. The switch that controls the power for everything is a [flip flop mechanical relay](https://www.amazon.com/Latching-Flip-Flop-Bistable-Self-Locking-Trigger/dp/B07VL9DBGT) that runs on the always-on power rail of the PSU.
 
 ## Display
 The model of the LCD panel is LM270WQ1(SD)(F1). Here are the [specs on panelook](https://www.panelook.com/modeldetail.php?id=18520). You can find the datasheet in this folder. Here's the summary of its specs.
