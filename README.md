@@ -20,53 +20,58 @@ Here's the list of features I want:
 * P1: Microphone
 * P2: RJ45 & USB 2.0 ports
 
-I already know the LCD panel can be reused. The speakers should be relatively straight-forward. I'd love to reuse the power supply if possible. But it's not a big deal if I can't. It should be pretty easy to stick another PSU inside. I'm also hoping to reuse the port openings on the back side for a few USB ports as well as the RJ45 for Ethernet.
+I already know the LCD panel can be reused. The speakers should be relatively straight-forward. I'd love to reuse the power supply if possible. But it's not a big deal if I can't. It should be pretty easy to stick another PSU inside. I'm also hoping to reuse the IO panel on the back side for a few USB ports as well as the RJ45 for Ethernet. I am also planning to expose a USB C socket there for connecting to the host computer.
 
 ## Overall Design
-At the center of everything, there's a USB C adapter that connects to the downstream host. It would have an HDMI video output, an Ethernet port, and a few USB ports. 
+At the center of everything is a USB C adapter that connects to the host. It would have an HDMI video output, an Ethernet port, and a few USB ports. I have previously used an Anker 343 USB C adapter for a similar project. But it does not have Ethernet, which could be mitigated by using a USB to Ethernet adapter. However, it is out of stock everywhere, including Anker's own website. It's possibly discontinued. So I got this [uni 8 in 1 adapter](https://www.amazon.com/dp/B0C3GDT9XN) from Amazon, with these features:
+
+* 4K @ 60Hz
+* 1 Gbps Ethernet
+* 100W PD (90W output)
+* 2 x USB 3.0
+* 1 x USB 2.0
+* SD reader (I have no use for it)
 
 ```
-                       ┌───────────┐
-                       │ LCD Panel │
-                       └───────────┘
-                          ↑     ↑ 
-                backlight │     │ eDP
-                   ┌──────────────────┐  audio   ┌────────┐    ┌──────────┐
-                   │ Video controller │ ───────> │ X─over │ ─> │ speakers │
-                   └──────────────────┘          └────────┘    └──────────┘
-                         ↑        ↑ 
-                    HDMI │        └────────────12v────────────────┐
-┌──────┐   PD,data   ┌───────────────┐   PD  ┌─────────────┐  12v │  ┌────────┐    ┌─────┐
-│ Host │ <─────────> │ USB C adapter │ <──── │ DC Extender │ <────┴─ │ Switch │ <─ │ PSU │
-└──────┘             └───────────────┘       └─────────────┘         └────────┘    └─────┘
-                       │     ┌──────┐
-                       ├───> │ RJ45 │
-                       │     └──────┘
-                       │     ┌─────────────┐
-                       ├───> │ USB 2.0 hub │
-                       │     └─────────────┘
-                       │       ↕         ↕
-                       │  ┌────────┐  ┌─────┐
-                       │  │ Webcam │  │ Mic │
-                       │  └────────┘  └─────┘
-                       │                                  
-                       │     ┌─────────────┐
-                       └───> │ USB 2.0 hub │
-                             └─────────────┘
-                                    ↑
-              ┌─────────────┬───────┴─────┬─────────────┐
-              ↓             ↓             ↓             ↓
-         ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐
-         │ USB Port │  │ USB Port │  │ USB Port │  │ USB Port │
-         └──────────┘  └──────────┘  └──────────┘  └──────────┘
+┌─────┐                ┌───────────┐
+│ PSU │                │ LCD Panel │
+└─────┘                └───────────┘
+   ↓            backlight ↑     ↑ eDP
+┌────────┐   12V    ┌──────────────────┐ audio ┌────────┐
+│ Switch │─────────>│ Video controller │──────>│ X─over │
+└────────┘          └──────────────────┘       └────────┘
+   ↓ 12V                   ↑ HDMI                  ↓
+┌─────────────┐ PD  ┌───────────────┐         ┌──────────┐
+│ DC Extender │────>│ USB C adapter │         │ Speakers │
+└─────────────┘     └───────────────┘         └──────────┘
+                       ↑       ↑     ┌──────┐
+┌──────┐               │       ├───> │ RJ45 │
+│ Host │ <─────────────┘       │     └──────┘
+└──────┘    PD,data            │     ┌─────────────┐
+                               ├───> │ USB 2.0 hub │
+                               │     └─────────────┘
+                               │       ↕         ↕
+                               │  ┌────────┐  ┌─────┐
+                               │  │ Webcam │  │ Mic │
+                               │  └────────┘  └─────┘
+                               ↓
+                        ┌─────────────┐
+                        │ USB 2.0 hub │
+                        └─────────────┘
+                               ↑
+         ┌─────────────┬───────┴─────┬─────────────┐
+         ↓             ↓             ↓             ↓
+    ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐
+    │ USB Port │  │ USB Port │  │ USB Port │  │ USB Port │
+    └──────────┘  └──────────┘  └──────────┘  └──────────┘
 ```
 
 ## Power
-The USB C adapter takes in a PD charger and pass through charges the host. To provide PD, I am going to use a [DC Extender](https://slimq.life/products/dc-to-usb-extender-for-150w-240). It has a DC booster and can provide all the voltages specified in PD 3.0. The video controller runs on 12 DC directly. The switch that controls the power for everything is a flip flop mechanical relay that runs on the always-on power rail of the PSU.
-
-The PSU provides a single 12V always-on rail `G3H`. Other voltages and rails are done on the logic board. So that was easy. I just need to cut the original wires and solder my own. Here's an excerpt from the logic board shcematic.
+The PSU (Model: ADP-300AF T) provides a single 12V always-on rail `G3H`. Other voltages and rails are done on the logic board. So that was easy. I just need to cut the original wires and solder my own. It provides 300W at 12V. Here's an excerpt from the logic board shcematic.
 
 ![PSU](psu.png)
+
+The USB C adapter takes in a PD charger and pass through charges the host. To provide PD, I am going to use a [DC Extender](https://slimq.life/products/dc-to-usb-extender-for-150w-240). It has a DC booster and can provide all the voltages specified in PD 3.0 and maxes out at 100W, which is exactly the maximum the USB C adapter can draw. The video controller runs on 12 DC directly. The switch that controls the power for everything is a [flip flop mechanical relay](https://www.amazon.com/Latching-Flip-Flop-Bistable-Self-Locking-Trigger/dp/B07VL9DBGT) that runs on the always-on power rail of the PSU.
 
 ## Display
 The model of the LCD panel is LM270WQ1(SD)(F1). Here are the [specs on panelook](https://www.panelook.com/modeldetail.php?id=18520). You can find the datasheet in this folder. Here's the summary of its specs.
