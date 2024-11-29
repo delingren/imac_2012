@@ -17,7 +17,7 @@ Here's the list of features I want:
 
 * P0: LCD panel
 * P0: Speakers
-* P1: PD charging the host
+* P1: PD charging
 * P1: Camera
 * P1: Microphone
 * P2: RJ45 & USB 2.0 ports
@@ -27,11 +27,11 @@ I already know the LCD panel can be reused. The speakers should be relatively st
 ## Overall Design
 At the center of everything is a USB C adapter that connects to the host. It would have an HDMI video output, an Ethernet port, and a few USB ports. I have previously used an Anker 343 USB C adapter for a similar project. But it does not have Ethernet, which could be mitigated by using a USB to Ethernet adapter. However, it is out of stock everywhere, including Anker's own website. It's possibly discontinued. So I got this [uni 8 in 1 adapter](https://www.amazon.com/dp/B0C3GDT9XN) from Amazon, with these features:
 
-* 4K @ 60Hz
+* HDMI 4K @ 60Hz
 * 1 Gbps Ethernet
 * 100W PD (90W output)
-* 2 x USB 3.0
-* 1 x USB 2.0
+* USB 3.0 x 2
+* USB 2.0 x 1
 * SD reader (I have no use for it)
 
 ```
@@ -73,7 +73,9 @@ The PSU (Model: ADP-300AF T) provides a single 12V always-on rail `G3H`. Other v
 
 ![PSU](psu.png)
 
-The USB C adapter takes in a PD charger and pass-through charges the host. To provide PD, I am going to use a [DC Extender](https://slimq.life/products/dc-to-usb-extender-for-150w-240). It has a DC booster and can provide all the voltages specified in PD 3.0 and maxes out at 100W, which is exactly the maximum the USB C adapter can draw. The video controller runs on 12V DC directly. The switch that controls the power for everything is a [flip flop mechanical relay](https://www.amazon.com/Latching-Flip-Flop-Bistable-Self-Locking-Trigger/dp/B07VL9DBGT) that runs on the always-on power rail of the PSU.
+The USB C adapter takes in a PD charger and pass-through charges the host. To provide PD, I am going to use a [DC Extender](https://slimq.life/products/dc-to-usb-extender-for-150w-240). It has a DC booster and can provide all the voltages specified in PD 3.0 and maxes out at 100W, which is exactly the maximum the USB C adapter can draw. The video controller runs on 12V DC directly. 
+
+I decided to utlize the power button and make it control the power to everything. I found a [flip flop mechanical relay](https://www.amazon.com/Latching-Flip-Flop-Bistable-Self-Locking-Trigger/dp/B07VL9DBGT) that can run on the always-on power rail of the PSU. It's rated at 10A, or 120W at 12V. Although that's probably enough, I might use 2 in parallel just to have a little more safety margin.
 
 ## Display
 The model of the LCD panel is LM270WQ1(SD)(F1). Here are the [specs on panelook](https://www.panelook.com/modeldetail.php?id=18520). You can find the datasheet in this folder. Here's the summary of its specs.
@@ -111,15 +113,25 @@ Originally, I also wanted to reuse the microphone. It looks like a MEMS PDM micr
 
 I have done something similar in [another project](https://github.com/delingren/hp_iq804) so I have a little knowledge about digital microphones. The original microphone is stereo and there's two meshes on the case. They are close to each other and are not even laid out horizontally. I don't see the point of having a stereo microphone for a DIY project like this. And the microphone is only going to be used for video meetings. So I am going to keep it simple and use a mono microphone.
 
-The heart of this component is a Pi Pico clone and a MEMS PDM microphone. I'm not going to delve into the details here since it's been elaborated in the other project. But I've included the source code in this repo under `pdm_microphone` folder. Basically, it'll interface with the host as a USB microphone.
+The heart of this component is a Pi Pico clone and a MEMS PDM microphone. I'm not going to delve into the details here since it's been elaborated in the other project. But I've included the source code in this repo under `pdm_microphone` folder. Basically, it'll interface with the host as a USB microphone. There are plenty of microphone units on mouser and digikey. I tried a few and settled with [this one](https://www.mouser.com/ProductDetail/Same-Sky/CMM-4737DT-26386-TR) for two reasons. First, the opening is on the opposite side of the soldering pads, which is convenient for this project. Second, the soldering pads are just big enough for manual soldering.
 
 ## IO Panel
 
 The original IO panel has openings for 4 USB A, 2 mini DP, and 1 RJ45 ports. I have no use for the mini DP ports. But I need a USB C female connector. So I decide to cut the bridge between the two mini DP ports to make it big enough for the USB C connector. I am using a USB C extension cable, with the female side exposed to the outside. Yes, I know extension cables are not supposed to exist according to USB 3 spec. But eh.
 
+![before](IMG_0637.jpeg)
+![after](IMG_0638.jpeg)
+
 I also really wanted to provide an Ethernet adapter, because, why not? I found this [RJ45 socket](
 https://www.aliexpress.us/item/3256806005093192.html) on Aliexpress. I then crimped the wires into a male plug, basically making it into an extension cable.
 
 ![RJ45 socket](rj45_socket.jpeg)
+
+For the USB ports, I'm using these [female USB sockets](https://www.amazon.com/Maxmoral-Connector-Female-Socket-Plastic/dp/B081JGZK14) and my plan is to connect them to a [solderable USB hub](https://www.amazon.com/Rakstore-Expansion-Concentrator-Development-Drive-Free/dp/B09FX4QN4J). Both these parts are available on AliExpress for cheaper.
+
+Now the most time consuming part is 3d printing a bracket to put everything together and mount in place. It takes a lot of measurements, trial and errors, and patience. And here is the monster that came out of it.
+
+![front](IMG_0654.jpeg)
+![back](IMG_0655.jpeg)
 
 ## Final Assembly
